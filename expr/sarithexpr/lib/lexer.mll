@@ -22,3 +22,4 @@ rule read =
   | "succ" {SUCC}
   | "pred" {PRED}
   | eof { EOF }
+

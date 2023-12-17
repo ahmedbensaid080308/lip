@@ -57,17 +57,17 @@ let%test "test_trace5" = test_trace
 let%test "test_trace6" = test_trace
   ("x:=3; y:=2; r:=0; while 1<=y do (r:=r+x; y:=y-1)", 10, "r", Nat 6)
 
-let%test "test_trace7" = test_trace
+let%test "test_trace7" = test_trace (*******no*********)
   ("x:=3; while 0<=x and not 0=x do x:=x-1; x:=5", 10, "x", Nat 5)
 
 let%test "test_trace8" = test_trace
   ("x:=5; y:=3; if x<=y then min:=x else min:=y", 10, "min", Nat 3)
 
-let%test "test_trace9" = test_trace
+let%test "test_trace9" = test_trace (*******no*********)
   ("x:=1; y:=2; z:=3; if x<=y and x<=z then min:=x else (if y<=z then min:=y else min:=z)", 10, "min", Nat 1)
 
-let%test "test_trace10" = test_trace
+let%test "test_trace10" = test_trace (*******no*********)
     ("x:=2; y:=1; z:=3; if x<=y and x<=z then min:=x else (if y<=z then min:=y else min:=z)", 10, "min", Nat 1)
 
-let%test "test_trace11" = test_trace
+let%test "test_trace11" = test_trace (********no********)
     ("x:=2; y:=3; z:=1; if x<=y and x<=z then min:=x else (if y<=z then min:=y else min:=z)", 10, "min", Nat 1)

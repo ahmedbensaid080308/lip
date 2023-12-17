@@ -28,3 +28,5 @@ type conf = St of state | Cmd of cmd * state
 
 exception TypeError of string
 exception UnboundVar of ide
+exception NotInitialized of string
+exception NoRuleApplies

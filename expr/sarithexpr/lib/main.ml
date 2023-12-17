@@ -130,7 +130,7 @@ let rec typecheck = function
       raise (TypeError((string_of_expr e)^" has type Nat, but type Bool was expexted"))
   |IsZero(e)-> 
     if((typecheck e)=NatT)then 
-      BoolT 
+      BoolT | e = cmd; EOF { e }
     else
       raise (TypeError((string_of_expr e)^" has type Nat, but type Bool was expexted")) 
 

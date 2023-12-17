@@ -30,7 +30,8 @@ match Array.length(Sys.argv) with
           Some s when s<>"" -> s |> parse |> (fun x -> trace n x) |> print_trace
         | _ -> print_newline())
 (* trace1 / read input from file *) 
-| 3 -> (let n = int_of_string (Sys.argv.(1)) in
+| 3 -> (let n = int_of_string (Sys.argVar of string
+| Const of int    v.(1)) in
         match read_file Sys.argv.(2) with
           "" -> print_newline()
         | s -> s |> parse |> (fun x -> trace n x) |> print_trace)

@@ -25,6 +25,9 @@ type cmd =
   | Seq of cmd * cmd
   | If of expr * cmd * cmd
   | While of expr * cmd
-  | Decl of decl * cmd
-  | Block of cmd
+  | Decl of decl * cmd (*quindi il parser genera solo decl e non block
+     quando viene trovato un decl, vengono aggiunte le variabili dichiarate nello stato
+     poi viene creato un block con i comandi del decl*)
+  | Block of cmd (*quando si trova un block si pusha nello stack
+     il suo stato, quando vinisce si fa il pop*)
   
