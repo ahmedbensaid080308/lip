@@ -2,10 +2,33 @@ open FunLib.Types
 open FunLib.Prettyprint
 open FunLib.Main
 
-
 (**********************************************************************
  trace test : (command, n_steps, location, expected value after n_steps)
  **********************************************************************)
+(*
+let rec expr_to_string = function
+    True->"True"
+    |False->"False"
+    |Var(ide)->"Var("^ide^")"
+    |Const(c)->"Const("^(string_of_int c)^")"
+    |Not(e)->"Not("^(expr_to_string e)^")"
+    |And(e1,e2)->"And("^(expr_to_string e1)^","^(expr_to_string e2)^")"
+    |Or(e1,e2)->"Or("^(expr_to_string e1)^","^(expr_to_string e2)^")"
+    |Add(n1,n2)->"Add("^(expr_to_string n1)^","^(expr_to_string n2)^")"
+    |Sub(n1,n2)->"Add("^(expr_to_string n1)^","^(expr_to_string n2)^")"
+    |Mul(n1,n2)->"Add("^(expr_to_string n1)^","^(expr_to_string n2)^")"
+    |Eq(n1,n2)->"Eq("^(expr_to_string n1)^","^(expr_to_string n2)^")"
+    |Leq(n1,n2)->"Leq("^(expr_to_string n1)^","^(expr_to_string n2)^")"
+    |Call(f,e)->"Add("^f^","^(expr_to_string e)^")"
+    |_->failwith"Errore"
+
+let rec cmd_to_string = function
+    Skip->"Skip"
+    |Assign(s,e)->"Assign("^s^","^(expr_to_string e)^")"
+    |Seq(cmd1,cmd2)->"Seq("^cmd_to_string cmd1^","^cmd_to_string cmd2^")"
+    |If(e,cmd1,cmd2)->"If("^(expr_to_string e)^","^cmd_to_string cmd1^","^cmd_to_string cmd2^")"
+    |While(e,cmd)->"While("^(expr_to_string e)^","^cmd_to_string cmd^")"
+*)
 
 let test_trace (cmd,n_steps,var,exp_val) =
   cmd
@@ -13,7 +36,7 @@ let test_trace (cmd,n_steps,var,exp_val) =
   |> fun c -> last (trace n_steps c)
   |> fun t -> match t with
     St s -> apply s var = exp_val
-  | Cmd(_,_) -> failwith "program not terminated"
+  | Cmd(_,_) -> failwith ("program not terminated")
 
 let%test "test_trace1" = test_trace
   ("int x; x:=51", 2, "x", 51)  
